@@ -10,10 +10,11 @@ import {
 	Query,
 	UnsupportedMediaTypeException
 } from '@nestjs/common'
+import { KeyCounterService } from './key-counter.service'
 
 @Controller()
 export class KeyCounterController {
-	private keyCounts = new Map<string, number>()
+	constructor(private readonly keyCounterService: KeyCounterService) {}
 
 	/**
 	 * @description
@@ -35,8 +36,7 @@ export class KeyCounterController {
 		if (typeof body !== 'string')
 			throw new BadRequestException('Request body must be a string')
 
-		const count = this.keyCounts.get(body) ?? 0
-		this.keyCounts.set(body, count + 1)
+		this.keyCounterService.incrementKeyCount(body)
 	}
 
 	/**
@@ -52,7 +52,6 @@ export class KeyCounterController {
 				"Query parameter 'key' must be a string"
 			)
 
-		const count = this.keyCounts.get(key) ?? 0
-		return count.toString()
+		return this.keyCounterService.getKeyCount(key)
 	}
 }
