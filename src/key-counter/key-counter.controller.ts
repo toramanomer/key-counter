@@ -1,16 +1,14 @@
 import {
 	BadRequestException,
-	Body,
 	Controller,
 	Get,
-	Headers,
 	HttpCode,
 	HttpStatus,
 	Post,
-	Query,
-	UnsupportedMediaTypeException
+	Query
 } from '@nestjs/common'
 import { KeyCounterService } from './key-counter.service'
+import { TextPlainBody } from './decorators/text-plain-body.decorator'
 
 @Controller()
 export class KeyCounterController {
@@ -20,22 +18,10 @@ export class KeyCounterController {
 	 * @description
 	 * Handles POST requests to `/input` to add or update a key's occurrence count.
 	 * Does not return a response body, and instead returns a `204 No Content` status code.
-	 *
-	 * @throws {UnsupportedMediaTypeException} If the content type is not `text/plain`.
-	 * @throws {BadRequestException} If the request body is not a string.
 	 */
 	@Post('input')
 	@HttpCode(HttpStatus.NO_CONTENT)
-	handleInput(
-		@Headers('content-type') contentType: string,
-		@Body() body: any
-	): void {
-		if (contentType !== 'text/plain')
-			throw new UnsupportedMediaTypeException()
-
-		if (typeof body !== 'string')
-			throw new BadRequestException('Request body must be a string')
-
+	async handleInput(@TextPlainBody() body: string): Promise<void> {
 		this.keyCounterService.incrementKeyCount(body)
 	}
 
