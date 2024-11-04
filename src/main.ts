@@ -8,7 +8,12 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule)
 	app.useBodyParser('text')
 	app.use(helmet())
-	await app.listen(9000)
+
+	const PORT = process.env.PORT || 3000
+	await app.listen(PORT)
+
+	console.log(`Listening on port ${PORT}`)
+	console.log(`NODE_ENV: ${process.env.NODE_ENV}`)
 }
 
 bootstrap()
