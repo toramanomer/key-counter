@@ -8,6 +8,7 @@ async function bootstrap() {
 	const app = await NestFactory.create<NestExpressApplication>(AppModule)
 	app.useBodyParser('text')
 	app.use(helmet())
+	app.getHttpServer().setTimeout(1 * 1000)
 
 	const PORT = process.env.PORT || 3000
 	await app.listen(PORT)
