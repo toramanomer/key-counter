@@ -21,3 +21,8 @@ A simple server built with NestJS that tracks the frequency of input keys submit
     ```sh
     npm run start:dev
     ```
+
+# Recommended Extensions
+
+-   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+-   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
