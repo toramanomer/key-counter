@@ -75,15 +75,22 @@ describe('Key Counter (e2e)', () => {
 	//////////////////////////////////////////////
 	// GET /query - Bad Request
 	//////////////////////////////////////////////
-	it('GET /query - should return Bad Request when key is missing', async () => {
-		return request(app.getHttpServer())
-			.get('/query')
-			.expect(HttpStatus.BAD_REQUEST, {
-				statusCode: HttpStatus.BAD_REQUEST,
-				message: "Query parameter 'key' must be a string",
-				error: 'Bad Request'
-			})
-	})
+	it.each([undefined, '', ' '])(
+		'GET /query - should return Bad Request when key is missing',
+		async key => {
+			return request(app.getHttpServer())
+				.get('/query')
+				.query({ key })
+				.expect(HttpStatus.BAD_REQUEST, {
+					statusCode: HttpStatus.BAD_REQUEST,
+					message:
+						key === undefined ?
+							"Query parameter 'key' must be a string"
+						:	"Query parameter 'key' must not be empty",
+					error: 'Bad Request'
+				})
+		}
+	)
 
 	it('GET /query - should return "0" for a non-existing key', async () => {
 		return request(app.getHttpServer())
