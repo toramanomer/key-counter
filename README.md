@@ -41,6 +41,12 @@ npm run build && npm run start:prod
     chmod +x scripts/run.sh && scripts/run.sh
     ```
 
+# Running End-to-End Tests
+
+```sh
+npm run test:e2e
+```
+
 # Recommended Extensions
 
 -   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
