@@ -10,11 +10,10 @@ async function bootstrap() {
 	app.use(helmet())
 	app.getHttpServer().setTimeout(1 * 1000)
 
-	const PORT = process.env.PORT || 3000
+	const PORT = process.env.PORT || 9000
 	await app.listen(PORT)
 
 	console.log(`Listening on port ${PORT}`)
-	console.log(`NODE_ENV: ${process.env.NODE_ENV}`)
 }
 
 bootstrap()
