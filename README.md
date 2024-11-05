@@ -24,8 +24,10 @@ A simple server built with NestJS that tracks the frequency of input keys submit
 
 # Building Locally
 
+After installing the dependencies, you can build the project with the following command:
+
 ```sh
-npm install && npm run build && npm run start:prod
+npm run build && npm run start:prod
 ```
 
 # Building with Docker
