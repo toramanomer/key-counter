@@ -22,13 +22,13 @@ A simple server built with NestJS that tracks the frequency of input keys submit
     npm run start:dev
     ```
 
-# Recommended Extensions
+# Building Locally
 
--   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
--   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
--   [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) if you want to run the server in a container
+```sh
+npm install && npm run build && npm run start:prod
+```
 
-# Building & Running with Docker
+# Building with Docker
 
 1. [Build Script](scripts/build.sh) is provided to build the Docker image.
     ```sh
@@ -38,3 +38,9 @@ A simple server built with NestJS that tracks the frequency of input keys submit
     ```sh
     chmod +x scripts/run.sh && scripts/run.sh
     ```
+
+# Recommended Extensions
+
+-   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+-   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+-   [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) if you want to run the server in a container
