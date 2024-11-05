@@ -1,0 +1,44 @@
+@url = http://localhost:9000
+@queryKeyUrl = {{url}}/query
+@postInputUrl = {{url}}/input
+
+#############################
+### GET /query
+#############################
+
+### Query without key
+GET {{queryKeyUrl}} HTTP/1.1
+
+### Query with empty key
+GET {{queryKeyUrl}}?key= HTTP/1.1
+
+### Query with non existing key
+GET {{queryKeyUrl}}?key=nonExistingKey HTTP/1.1
+
+
+#############################
+### POST /input
+#############################
+
+### Content-Type header is missing
+POST {{postInputUrl}} HTTP/1.1
+
+### Content-Type header is invalid
+POST {{postInputUrl}} HTTP/1.1
+Content-Type: application/json
+
+{}
+
+### Content-Type header is valid but body is missing
+POST {{postInputUrl}} HTTP/1.1
+Content-Type: text/plain
+
+
+### Sending a valid request
+POST {{postInputUrl}} HTTP/1.1
+Content-Type: text/plain
+
+key1
+
+### Check if the key is incremented
+GET {{queryKeyUrl}}?key=key1 HTTP/1.1

@@ -64,3 +64,4 @@ npm run test:e2e
 -   [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 -   [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 -   [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) if you want to run the server in a container
+-   [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) for testing endpoints using the provided [requests file](key-counter.http)
