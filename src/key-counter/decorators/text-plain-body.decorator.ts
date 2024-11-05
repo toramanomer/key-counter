@@ -20,7 +20,11 @@ export const TextPlainBody = createParamDecorator(
 		if (!request.is('text/plain')) throw new UnsupportedMediaTypeException()
 
 		const body = request.body
-		if (typeof body !== 'string') throw new BadRequestException()
+		if (typeof body !== 'string')
+			throw new BadRequestException('Body must be a string')
+
+		if (body.trim() === '')
+			throw new BadRequestException('Body must not be empty')
 
 		return body.trim()
 	}
