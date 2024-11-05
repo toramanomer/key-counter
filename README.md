@@ -2,6 +2,18 @@
 
 A simple server built with NestJS that tracks the frequency of input keys submitted via HTTP requests.
 
+# Endpoints
+
+1. `POST /input`
+    - Description: Increments the count of the key if the key already exists, otherwise creates a new key with a count of 1. The key is case-sensitive and is trimmed before being stored.
+    - Request Headers: `Content-Type: text/plain`. Otherwise, the server will respond with a 415 Unsupported Media Type error.
+    - Request Body: Non-empty string containing the key to be stored. Throws a 400 Bad Request error if the body is empty.
+    - Success Response: `204 No Content`
+2. `GET /query`
+    - Description: Retrieves the count of the key. The key is case-sensitive and is trimmed before being queried.
+    - Query Parameters: `key` - Non-empty string containing the key to be queried. Throws a 400 Bad Request error if the key is not provided.
+    - Success Response: `200 OK` with the count of the key in the response body.
+
 # Installation
 
 1. Clone the repository:
